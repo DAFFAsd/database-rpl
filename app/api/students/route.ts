@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse,NextRequest} from 'next/server'
 import pool from '@/lib/db'
 
 // GET all students
@@ -13,7 +13,7 @@ export async function GET() {
 }
 
 // POST new student
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const { full_name, class: studentClass, residence, aspiration } = await request.json()
     const result = await pool.query(
